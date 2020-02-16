@@ -1,26 +1,75 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+const Title = (props) => { //state less
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <h1> Product List {props.name}</h1>
+
+  )
 }
 
-export default App;
+const ProductCard = (props) => {
+  return (
+    <div>
+      {props.product.name},
+      {props.product.price}
+    </div>
+  )
+}
+
+
+class ProductList extends React.Component { //state full
+  state = {
+    //key : value
+    products: [
+      {
+        name: "Oreo",
+        description: "Biscuit. 112g",
+        price: 270.0
+      },
+
+      {
+        name: "3D Mask ผู้ใหญ่",
+        description: "Biscuit. 112g",
+        price: 129.0
+      },
+
+      {
+        name: "กะเพรา",
+        description: "กะเพรา 4 ต้น",
+        price: 10.5
+      },
+
+      {
+        name: "Bar-B-Plaza E-voucher",
+        description: "e-voucher 1000",
+        price: 85.0
+      }
+    ],
+    user: {
+      name: "Bas"
+    }
+  };
+
+  render() {   ///// important
+    return (   ///// must return
+      <div>
+        <Title name="BAS!!" />
+        <Title name={10}/> 
+        <h1>Product List {this.state.user.name}</h1>
+        <div>
+          {this.state.products.map(
+            (product) => (
+              <ProductCard product={product}/>
+              // <div>
+              //   {product.name},
+              // {product.price}
+              // </div>
+            )
+            )}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ProductList;
