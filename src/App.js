@@ -1,11 +1,13 @@
 import React from "react";
+import axios from 'axios';
 import './App.css'
+import { http } from "follow-redirects";
+
 
 function Title(props)  { //state less
   return (
    
     <h1>{props.name}</h1>
-    
 
   )
 }
@@ -50,17 +52,30 @@ class ProductList extends React.Component { //state full
         name: "Bar-B-Plaza E-voucher",
         description: "e-voucher 1000",
         price: 85.0
-      }
+      },
     ],
     user: {
       name: "Bas"
     }
-  };
+  }
+
+  componentDidMount =() => {
+
+      axios.get('https://dry-scrubland-02499.herokuapp.com/api/v1/products')
+      
+    // setTimeout(()=>{
+    //   this.setState({
+    //     user:{
+    //       name: "Nutnarong"
+    //     }
+    //   })
+    // },3000);
+  }
 
   render() {   ///// important
     return (   ///// must return
       <div>
-       
+        <Title name = {this.state.user.name}/>
         <Title name ="New Product"/>
         <ProductCard item = {this.state.products[0]}/>
         <ProductCard item = {this.state.products[1]}/>
