@@ -16,10 +16,14 @@ const ProductCard = (props) => {
   return (
     
     <div className="product-card">
-      {props.item.name},
-      {props.item.price}
+      <img src={props.item.product_image} className="product-image"/>
+      {props.item.product_name}
+
+      {props.item.product_detail}
+      {/* {props.item.price} */}
     
     <button type="button" class="btn btn-success">But it now</button>
+    
     </div>
     
   )
@@ -61,7 +65,14 @@ class ProductList extends React.Component { //state full
 
   componentDidMount =() => {
 
-      axios.get('https://dry-scrubland-02499.herokuapp.com/api/v1/products')
+      axios.get(
+        'https://dry-scrubland-02499.herokuapp.com/api/v1/products'
+      ).then((response)=>{
+         //console.log('response data',response)
+         this.setState({
+           products:response.data
+         })
+      })
       
     // setTimeout(()=>{
     //   this.setState({
@@ -85,7 +96,7 @@ class ProductList extends React.Component { //state full
         <div>
           {this.state.products.map(
             (product) => (
-              <ProductCard item={product}/>
+              <ProductCard key={product.id} item={product}/>
 
               // <div>
               //   {product.name},

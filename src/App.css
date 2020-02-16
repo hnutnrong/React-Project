@@ -37,18 +37,24 @@
   }
 }
 
+.product-image{
+  width: 100px;
+}
+
+
 .product-card{
   background-color: rgb(199, 199, 199);
   border: 1px solid grey;
   border-radius: 4px;
   margin:5px;
   width: 240px;
-  height: 240px;
+  height: 500px;
   left: 218px;
   top: 320px;
   display: inline-block;
   
  
+
 
 
 }
