@@ -1,19 +1,25 @@
 import React from "react";
+import './App.css'
 
 function Title(props)  { //state less
   return (
+   
     <h1>{props.name}</h1>
-
+    
 
   )
 }
 
 const ProductCard = (props) => {
   return (
-    <div>
+    
+    <div className="product-card">
       {props.item.name},
       {props.item.price}
+    
+    <button type="button" class="btn btn-success">But it now</button>
     </div>
+    
   )
 }
 
@@ -54,11 +60,12 @@ class ProductList extends React.Component { //state full
   render() {   ///// important
     return (   ///// must return
       <div>
+       
+        <Title name ="New Product"/>
         <ProductCard item = {this.state.products[0]}/>
         <ProductCard item = {this.state.products[1]}/>
-        <Title name ="New Product"/>
         <Title name="Nut" />
-        <Title name={10}/> 
+        <Title name="9" />
         
         <div>
           {this.state.products.map(
