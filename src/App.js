@@ -1,8 +1,9 @@
 import React from "react";
 
-const Title = (props) => { //state less
+function Title(props)  { //state less
   return (
-    <h1> Product List {props.name}</h1>
+    <h1>{props.name}</h1>
+
 
   )
 }
@@ -10,8 +11,8 @@ const Title = (props) => { //state less
 const ProductCard = (props) => {
   return (
     <div>
-      {props.product.name},
-      {props.product.price}
+      {props.item.name},
+      {props.item.price}
     </div>
   )
 }
@@ -53,13 +54,17 @@ class ProductList extends React.Component { //state full
   render() {   ///// important
     return (   ///// must return
       <div>
-        <Title name="BAS!!" />
+        <ProductCard item = {this.state.products[0]}/>
+        <ProductCard item = {this.state.products[1]}/>
+        <Title name ="New Product"/>
+        <Title name="Nut" />
         <Title name={10}/> 
-        <h1>Product List {this.state.user.name}</h1>
+        
         <div>
           {this.state.products.map(
             (product) => (
-              <ProductCard product={product}/>
+              <ProductCard item={product}/>
+
               // <div>
               //   {product.name},
               // {product.price}
