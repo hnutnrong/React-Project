@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';  ///เชื่อมให้ Commentform และ commentReducer รู้จักกัน
 
 
 class CommentForm extends Component {
@@ -12,6 +13,13 @@ class CommentForm extends Component {
         name,
         message
       }
+
+      this.props.dispatch({  ///การเอา object ที่ได้จากด้านบนเข้าไปในคลัง(state)
+        type:'ADD_COMMENT',
+        data        ///ถูกโยนเข้ามาจากด้านบน
+      }
+      );
+
       this.getName.value="";  //เป็นการเคลียร์ค่าในช่องform หลังจากกด submit 
       this.getMessage.value="";
       console.log(data); //แสดงข้อมูลที่ใส่เข้ามาใน console 
@@ -35,4 +43,4 @@ class CommentForm extends Component {
   }
 }
 
-export default CommentForm;
+export default connect()(CommentForm);
