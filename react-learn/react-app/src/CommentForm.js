@@ -43,4 +43,4 @@ class CommentForm extends Component {
   }
 }
 
-export default connect()(CommentForm);
+export default connect()(CommentForm); ///เชื่อมให้ Commentform และ commentReducer รู้จักกัน
