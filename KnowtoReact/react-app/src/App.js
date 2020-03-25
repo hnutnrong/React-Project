@@ -5,16 +5,29 @@ import Counter from "./Counter";
 
 function App() {
   var users = [
-    { name: "Nutnarong" },
-    { name: "Miler" }
+    { name: "Nutnarong", isDeveloper: true },     ///true คือเป็น Developer
+    { name: "Miler", isDeveloper: false }
   ];
+
+  const numbers = [10, 20, 30, 40];
+  const result = numbers.reduce((sum, number) => {
+    return sum + number
+  }, 0) //0 คือค่า default ตอนต้นว่าจะให้เป็นเท่าไหร่
+
+
 
   return (
     <div className="App">
       <header className="App-header">
         <ul>
-          {users.map(user=> <li>{user.name}</li>)}   
+          {
+            users
+              .filter(user => user.isDeveloper)   ///ให้แสดงเฉพาะที่เป็น Developer
+              .map(user => <li>{user.name}</li>)
+          }
+          {/* {users.map(user=> <li>{user.name}</li>)}    */}
         </ul>
+        {result}
       </header>
     </div>
     ///เขียนเป็น arrow function
