@@ -5,6 +5,9 @@ const commentReducer = (state = [], action)=>{
             case 'ADD_COMMENT':  ///จะให้ 'ADD_COMMENT' ทำอะไร
             return state.concat([action.data]);
             
+            case 'DELETE_COMMENT':
+            return state.filter((comment)=>comment.id !== action.id);
+            
             default:
             return state;
       }
