@@ -3,7 +3,7 @@
 // import './index.css';
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore,combineReducers } from 'redux';  /// combineReducers ในกรณีมี Ruducer หลายตัว
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -20,7 +20,27 @@ const initialState = {
   value: []
 }
 
-const reducer = (state = initialState, action) => {
+const userReducer = (state = { name: "Nutnarong", age: 21 }, action) => {
+  switch (action.type) {
+    case "setName":
+      state = {
+          ...state,
+          name:action.payload
+      }
+      break;
+
+    case "setAge":
+      state = {
+          ...state,
+          age:action.payload
+      }
+      break;
+    default:
+  }
+  return state;
+}
+
+const employeeReducer = (state = initialState, action) => {
   switch (action.type) {  //action ใช้ในการเปลี่ยนแปลงค่า
     case "ADD":  //ถ้าเป็น ADD ให้บวก
       // state += action.payload;
@@ -32,7 +52,7 @@ const reducer = (state = initialState, action) => {
         //หรือจะเขียนแบบนี้ก็ได้
         result: state.result += action.payload,
         value: [...state.value, action.payload]
-        
+
       }
       break;
 
@@ -54,7 +74,7 @@ const reducer = (state = initialState, action) => {
   return state;
 }
 
-const store = createStore(reducer); ///15000คือค่า State เอามาเก็ฐไว้ใน Store
+const store = createStore(combineReducers({employeeReducer,userReducer})); //มี Reducer หลายตัว ใช้ combineReducer อย่าลืม import ด้วย
 
 store.subscribe(() => {  ///ใช่อัพเดทค่า State แสดงค่า State
   console.log("Update Store:", store.getState());
@@ -65,12 +85,13 @@ store.dispatch({   ///.dispatch ใช้ในการเปลี่ยนแ
 
 });
 
-store.dispatch({
-  type: "ADD",
-  payload: 15000
-});
+store.dispatch({ ///.dispatch ใช้ในการเปลี่ยนแปลงค่าใน State
+  type:"setName",
+  payload:"Redux"
+})
 
-store.dispatch({
-  type: "SUBTRACT",
-  payload: 8000
-});
+store.dispatch({ ///.dispatch ใช้ในการเปลี่ยนแปลงค่าใน State
+  type:"setAge",
+  payload:"22"
+})
+
