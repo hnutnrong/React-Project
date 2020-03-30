@@ -7,6 +7,7 @@ class CommentForm extends Component {
       e.preventDefault();  //ไม่ต้องให้หน้าBrowserมันเปลี่ยน
       const name = this.getName.value;  //ดึงค่าจากตัวแปร getName  
       const message = this.getMessage.value;//ดึงค่าจากตัวแปร getMessage
+      
       //Object
       const data = {
         id: new Date(), //สร้าง id ให้เป็นค่าวันที่ที่ใส่เข้ามา
