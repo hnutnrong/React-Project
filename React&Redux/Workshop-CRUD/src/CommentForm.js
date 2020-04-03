@@ -12,7 +12,8 @@ class CommentForm extends Component {
       const data = {
         id: new Date(), //สร้าง id ให้เป็นค่าวันที่ที่ใส่เข้ามา
         name,
-        message
+        message,
+        editing:false
       }
 
       this.props.dispatch({  ///การเอา object ที่ได้จากด้านบนเข้าไปในคลัง(state)

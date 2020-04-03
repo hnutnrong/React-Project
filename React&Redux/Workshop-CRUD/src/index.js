@@ -15,6 +15,8 @@ ReactDOM.render(
   </Provider> , document.getElementById('root'));
 
 // ReactDOM.render(<App />, document.getElementById('root'));
+//เอา <Provider> มาครอบ App โดยต้อง import {Provide} จาก 'react-refux ด้วย'
+//การที่เอา Provider มาครอบคือการดึงข้อมูลจากตัว store จะถูกดึงในรูปแบบของ props แทน
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
